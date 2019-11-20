@@ -8,7 +8,7 @@ namespace ConsoleApp2
         static void Main(string[] args)
         {
             Console.WriteLine("Hello World!");            
-            using (var conn = new SqlConnection("Data Source=DESKTOP-K0D29BB;Initial Catalog=TestDB;User ID=test_user;Password=test_pass123;Connect Timeout=30;"))
+            using (var conn = new SqlConnection("Data Source=sql1.example.local;Initial Catalog=TestDB;User ID=test_user;Password=test_pass123;Connect Timeout=30;"))
             {
                 //This doesn't work with our SQL Server 2017 when PKI certificate is configured on server
                 conn.Open();                
