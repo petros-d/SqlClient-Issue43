@@ -4,10 +4,10 @@ https://github.com/dotnet/SqlClient/issues/43
 
 # Reproducing issue
 
-Issue is reproducable on Windows 10 1903 machine with Docker for Windows 19.03.4. Summary steps:
+Issue is NOT reproducable on Windows 10 1903 machine with Docker for Windows 19.03.4. Summary steps:
 - Install SQL Server 2017 Express (https://www.microsoft.com/en-gb/sql-server/sql-server-editions-express) Direct download: https://go.microsoft.com/fwlink/?linkid=853017
 - Ensure SQL Server is listening on the correct IP's and ports
-- Generate certificate for SQL Server with in-accessible CRL defined, following instructions in pki/
+- Generate certificate for SQL Server with inaccessible CRL defined, following instructions in pki/
 - Import certificate into Windows certificate store
 - Ensure SQL Server recognises certificate
 - Restart SQL Server
