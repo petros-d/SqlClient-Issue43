@@ -2,9 +2,9 @@
 
 https://github.com/dotnet/SqlClient/issues/43
 
-# Reproducing issue
+## Reproducing issue
 
-Issue is NOT reproducable on Windows 10 1903 machine with Docker for Windows 19.03.4. Summary steps:
+Issue is __NOT__ reproducable on Windows 10 1903 machine with Docker for Windows 19.03.4. Summary steps:
 - Install SQL Server 2017 Express (https://www.microsoft.com/en-gb/sql-server/sql-server-editions-express) Direct download: https://go.microsoft.com/fwlink/?linkid=853017
 - Ensure SQL Server is listening on the correct IP's and ports
 - Generate certificate for SQL Server with inaccessible CRL defined, following instructions in pki/
@@ -23,32 +23,32 @@ Issue is NOT reproducable on Windows 10 1903 machine with Docker for Windows 19.
 
 Test network connectivity to the SQL Server host from a docker container:
 
- docker run --rm -it ubuntu bash
- apt-get update && apt-get install -y curl telnet dnsutils net-tools
+ `docker run --rm -it ubuntu bash
+ apt-get update && apt-get install -y curl telnet dnsutils net-tools`
 
- nslookup DESKTOP-K0D29BB && \
- telnet DESKTOP-K0D29BB 1433
+ `nslookup DESKTOP-K0D29BB && \
+ telnet DESKTOP-K0D29BB 1433`
 
 
 #### Build docker containers:
 
-cd into the dotnet3 directory
+Navigate to the dotnet3 directory
 
-run docker build command:
+Run docker build command:
 
- docker build -t dotnet3 . --no-cache
+ `docker build -t dotnet3 . --no-cache`
 
 
 Run and test:
 
- docker run --rm --add-host=DESKTOP-K0D29BB:192.168.255.154 dotnet3
+ `docker run --rm --add-host=DESKTOP-K0D29BB:192.168.255.154 dotnet3`
 
 #### Start in bash overwriting entrypoint (used to troubleshoot):
 
- docker run --rm -it  --entrypoint "/bin/bash" dotnet3
+ `docker run --rm -it  --entrypoint "/bin/bash" dotnet3`
 
 Install sqlcmd:
-
+```
  apt-get update && \
  apt-get install -y gnupg && \
  curl https://packages.microsoft.com/keys/microsoft.asc | apt-key add - && \
@@ -59,8 +59,9 @@ Install sqlcmd:
  apt-get install -y locales \
     && echo "en_US.UTF-8 UTF-8" > /etc/locale.gen \
     && locale-gen
+```
 
-/opt/mssql-tools/bin/sqlcmd -S DESKTOP-K0D29BB  -U sa -P TempPass123
+`/opt/mssql-tools/bin/sqlcmd -S DESKTOP-K0D29BB  -U sa -P TempPass123`
 
 
 ### Notes:
