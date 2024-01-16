@@ -10,7 +10,7 @@
 
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Data.SqlClient" Version="1.0.19239.1"/>
+    <PackageReference Include="Microsoft.Data.SqlClient" Version="2.1.7"/>
   </ItemGroup>
 
 </Project>
